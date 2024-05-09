@@ -1,0 +1,236 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #708d81;
+  overflow: hidden;
+}
+
+.record-player {
+  position: relative;
+}
+
+
+.plinth {
+  position: relative;
+  background-color: #202022;
+  width:400px;
+  height: 300px;
+  box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+  border-radius: 20px;
+}
+
+.plinth:before {
+  content:"";
+  position: absolute;
+  width:395px;
+  height: 295px;
+  background-color: #e93f21;
+  border-radius: 20px;
+}
+
+.plinth:after {
+  content:"";
+  position: absolute;
+  border-radius: 50%;
+  background-color: #2c2424;
+  width: 30px;
+  height: 30px;
+  top:20px;
+  left:20px;
+  box-shadow: 0 230px #2c2424;
+}
+.platter {
+  position: absolute;
+  border-radius: 50%;
+  width:270px;
+  height: 270px;
+  background-color: #d6d6d6;
+  z-index:2;
+  top:15px;
+  left:15px;
+}
+
+.platter:before {
+  content:"";
+  position: absolute;
+  border-radius: 50%;
+  background-color: #d6d6d6;
+  width:40px;
+  height:40px;
+  border: 10px solid #2c2424;
+  left:280px;
+  top:30px;
+}
+
+.vinyl {
+  position: absolute;
+  background-image: repeating-radial-gradient(#181312, #181312 10%, #2c2424 15%);
+  border-radius:50%;
+  width:250px;
+  height:250px;
+  z-index:5;
+  top:25px;
+  left:25px;
+  overflow: hidden;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+}
+
+.vinyl:before, .vinyl:after {
+  content:"";
+  position: absolute;
+  border-style: solid;
+  border-color: rgba(255,255,255,.1) transparent transparent transparent;
+  border-width: 130px 50px 0 125px;
+}
+
+.vinyl:after {
+  top:170px;
+  left:60px;
+  transform: rotate(-65deg);
+}
+
+.top-circle {
+  position: absolute;
+  z-index:10;
+  width:70px;
+  height: 70px;
+  background-color: #e93f21;
+  border-radius:50%;
+  top:115px;
+  left:115px;
+}
+
+.top-circle:before {
+  content:"";
+  position: absolute;
+  border-radius:50%;
+  width:15px;
+  height:15px;
+  background-color: #181312;
+  top:28px;
+  left:28px;
+}
+
+input#volume-control {
+  -webkit-appearance: none; 
+  width: 100%; 
+  background-color: transparent; 
+}
+
+input#volume-control:focus {
+  outline: none; 
+}
+
+input#volume-control::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+
+input#volume-control {
+  position: absolute;
+  z-index:1;
+  transform: rotate(-90deg) scale(.25);
+  left:40%;
+  top:70%;
+}
+
+input#volume-control::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   cursor: pointer;
+   width: 40px;
+   height:70px;
+   background-color: #333533;
+   border: none;
+   border-radius:2px;
+   margin-top:-4px;
+}
+
+input#volume-control::-moz-range-thumb {
+   cursor: pointer;
+   width: 30px;
+   height:70px;
+   background-color: #333533;
+   border: none;
+   border-radius:2px;
+}
+
+input#volume-control::-ms-thumb {
+  cursor: pointer;
+   width: 30px;
+   height:70px;
+   background-color: #333533;
+   border: none;
+   border-radius:2px;
+}
+
+input#volume-control::-webkit-slider-runnable-track {
+  background-color: #d6d6d6;
+  border:none;
+  margin:-30px; 
+}
+
+input#volume-control::-moz-range-track {
+  background-color: #333533;
+  border:30px solid black;
+  outline:2px solid #d6d6d6;
+}
+
+
+input#headshell {
+  display: none;
+}
+.headshell {
+  width: 30px;
+  height: 140px;
+  position: absolute;
+  border-right: 10px solid #ffffff;
+  border-bottom: 10px solid #ffffff;
+  border-bottom-right-radius: 50px;
+  z-index:15;
+  left: 290px;
+  top: 80px;
+  cursor: pointer;
+  transition: .3s;
+  transform-origin: top;
+}
+
+.headshell:before, .headshell:after {
+  content:"";
+  position: absolute;
+}
+
+.headshell:before {
+  background-color: black;
+  width:20px;
+  height:30px;
+  top:-20px;
+  left:25px;
+}
+
+.headshell:after {
+  height:0;
+  width:15px;
+  border-top: 25px solid #b2aea6;
+  border-right: 2px solid transparent;
+  border-left: 2px solid transparent;
+  top:133px;
+  left:-20px;
+  transform: rotate(90deg);
+}
+
+#headshell:checked + .headshell {
+  transform: rotate(35deg);
+}
+
+@keyframes play  {
+  to {transform: rotate(360deg);}
+}
+
+#headshell:checked ~ .vinyl {
+  animation: play 2s linear infinite .3s;
+}

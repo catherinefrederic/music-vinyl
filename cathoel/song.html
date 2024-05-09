@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cath-music</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="record-player">
+        <input type="checkbox" id="headshell">
+        <label class="headshell" for="headshell"></label>
+        <audio id="player">
+        <source src="cupid-fifty.mp3" type="audio/mpeg"/>
+      </audio>
+        <input type="range" max="1" min="0" step="0.1" id="volume-control" onchange="audioVolume(this.value)">
+        <div class="plinth"></div>
+        <div class="platter"></div>
+        <div class="vinyl"></div>
+        <div class="top-circle"></div>
+      </div>
+      <script src="song.js"></script>
+</body>
+</html>
